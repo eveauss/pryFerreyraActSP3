@@ -141,6 +141,7 @@
             // cmbMarca
             // 
             cmbMarca.FormattingEnabled = true;
+            cmbMarca.Items.AddRange(new object[] { "P", "F", "R" });
             cmbMarca.Location = new Point(121, 46);
             cmbMarca.Name = "cmbMarca";
             cmbMarca.Size = new Size(121, 23);
@@ -154,10 +155,12 @@
             btnAgregar.TabIndex = 1;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // cmbOrigen
             // 
             cmbOrigen.FormattingEnabled = true;
+            cmbOrigen.Items.AddRange(new object[] { "N", "I" });
             cmbOrigen.Location = new Point(338, 44);
             cmbOrigen.Name = "cmbOrigen";
             cmbOrigen.Size = new Size(121, 23);
@@ -195,6 +198,7 @@
             btnConsultar.TabIndex = 8;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // rbImportado
             // 
