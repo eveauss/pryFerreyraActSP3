@@ -21,12 +21,25 @@ namespace pryFerreyraActSP3
 
 
 
-        private void label2_Click(object sender, EventArgs e)
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+            }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
         {
             if (CantidadRepuestos >= 100)
             {
@@ -86,11 +99,8 @@ namespace pryFerreyraActSP3
             };
 
             MessageBox.Show("Repuesto agregado exitosamente.");
-
-
         }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private void btnConsultar_Click_1(object sender, EventArgs e)
         {
             lstResultados.Items.Clear();
 
@@ -114,29 +124,6 @@ namespace pryFerreyraActSP3
             {
                 MessageBox.Show("No se encontraron repuestos que coincidan con los criterios de búsqueda.");
             }
-        }
-
-        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
-            {
-                e.Handled = true;
-            }
-        }
-
-
-
-        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void frmCargaRepuestos_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
