@@ -77,6 +77,7 @@
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(120, 23);
             txtPrecio.TabIndex = 15;
+            txtPrecio.KeyPress += txtPrecio_KeyPress;
             // 
             // txtDescripcion
             // 
@@ -92,6 +93,7 @@
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(120, 23);
             txtNumero.TabIndex = 13;
+            txtNumero.KeyPress += txtNumero_KeyPress;
             // 
             // lblPrecio
             // 
@@ -208,7 +210,7 @@
             rbImportado.Size = new Size(81, 19);
             rbImportado.TabIndex = 9;
             rbImportado.TabStop = true;
-            rbImportado.Text = "importado";
+            rbImportado.Text = "Importado";
             rbImportado.UseVisualStyleBackColor = true;
             // 
             // lstResultados
@@ -223,6 +225,7 @@
             // cmbConsultaMarca
             // 
             cmbConsultaMarca.FormattingEnabled = true;
+            cmbConsultaMarca.Items.AddRange(new object[] { "P", "F", "R" });
             cmbConsultaMarca.Location = new Point(106, 43);
             cmbConsultaMarca.Name = "cmbConsultaMarca";
             cmbConsultaMarca.Size = new Size(121, 23);
@@ -247,7 +250,9 @@
             Controls.Add(gbConsulta);
             Controls.Add(gbDatos);
             Name = "frmCargaRepuestos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Carga de Repuestos ";
+            Load += frmCargaRepuestos_Load;
             gbDatos.ResumeLayout(false);
             gbDatos.PerformLayout();
             gbConsulta.ResumeLayout(false);
