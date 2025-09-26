@@ -7,16 +7,17 @@ namespace pryFerreyraActSP3
             InitializeComponent();
         }
 
-        public class Repuesto
+        public struct Repuesto
         {
-            public char Marca { get; set; }
-            public char Origen { get; set; }
-            public int Numero { get; set; }
-            public string Descripcion { get; set; }
-            public float Precio { get; set; }
+            public char Marca;
+            public char Origen;
+            public int Numero;
+            public string Descripcion;
+            public float Precio;
         }
 
-        Repuesto[] repuestos = new Repuesto[100];
+        const int MAX = 100;
+        Repuesto[] repuestos = new Repuesto[MAX];
         int CantidadRepuestos = 0;
 
 
@@ -29,7 +30,6 @@ namespace pryFerreyraActSP3
             }
         }
 
-
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
@@ -38,48 +38,45 @@ namespace pryFerreyraActSP3
             }
         }
 
+      
 
-        private void btnAgregar_Click_1(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (CantidadRepuestos >= 100)
+            if (CantidadRepuestos >= MAX)
             {
                 MessageBox.Show("No se pueden agregar más repuestos. Capacidad máxima alcanzada.");
             }
 
             char Marca = Convert.ToChar(cmbMarca.SelectedItem);
-            char Origen = Convert.ToChar(cmbOrigen.SelectedItem);
+            char Origen = rbNacional.Checked ? 'N' : 'I';
 
-            if (!"PFR".Contains(Marca) || !"INA".Contains(Origen))
+            if (!"PFR".Contains(Marca) || !"NI".Contains(Origen))
             {
                 MessageBox.Show("Marca u Origen inválido.");
                 return;
             }
 
-            if (!int.TryParse(txtNumero.Text, out int Numero) || Numero > 999 || Numero < 0)
+            if (!int.TryParse(txtNumero.Text, out int numero) || numero < 0 || numero > 999999)
             {
                 MessageBox.Show("Número inválido.");
                 return;
             }
 
-            bool numeroExistente = false;
+
             for (int i = 0; i < CantidadRepuestos; i++)
             {
-                if (repuestos != null && repuestos[i].Numero == Numero)
+                if (repuestos != null && repuestos[i].Numero == numero)
                 {
-                    numeroExistente = true;
-                    break;
+                    MessageBox.Show("Número de repuesto ya existente.");
+                    return;
                 }
             }
 
-            if (numeroExistente)
-            {
-                MessageBox.Show("Número de repuesto ya existente.");
-                return;
-            }
+
 
             if (txtDescripcion.Text.Length > 50)
             {
-                MessageBox.Show("Descripción demasiado larga.");
+                MessageBox.Show("LA descripción no puede superar los 50 caracteres.");
                 return;
             }
 
@@ -89,18 +86,18 @@ namespace pryFerreyraActSP3
                 return;
             }
 
-            repuestos[CantidadRepuestos++] = new Repuesto
-            {
-                Marca = Marca,
-                Origen = Origen,
-                Numero = Numero,
-                Descripcion = txtDescripcion.Text,
-                Precio = Precio
-            };
+            repuestos[CantidadRepuestos].Marca = Marca;
+            repuestos[CantidadRepuestos].Origen = Origen;
+            repuestos[CantidadRepuestos].Numero = numero;
+            repuestos[CantidadRepuestos].Descripcion = txtDescripcion.Text;
+            repuestos[CantidadRepuestos].Precio = Precio;
+
+            CantidadRepuestos++;
 
             MessageBox.Show("Repuesto agregado exitosamente.");
         }
-        private void btnConsultar_Click_1(object sender, EventArgs e)
+
+        private void btnConsultar_Click(object sender, EventArgs e)
         {
             lstResultados.Items.Clear();
 
@@ -122,7 +119,7 @@ namespace pryFerreyraActSP3
 
             if (lstResultados.Items.Count == 0)
             {
-                MessageBox.Show("No se encontraron repuestos que coincidan con los criterios de búsqueda.");
+                MessageBox.Show("No se encontraron repuestos con esos criterios.");
             }
         }
     }

@@ -192,7 +192,7 @@
             btnAgregar.TabIndex = 1;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click_1;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // cmbOrigen
             // 
@@ -248,7 +248,7 @@
             btnConsultar.TabIndex = 8;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
-            btnConsultar.Click += btnConsultar_Click_1;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // rbImportado
             // 
