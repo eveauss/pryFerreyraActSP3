@@ -95,6 +95,16 @@ namespace pryFerreyraActSP3
             CantidadRepuestos++;
 
             MessageBox.Show("Repuesto agregado exitosamente.");
+
+            txtNumero.Clear();
+            txtDescripcion.Clear();
+            txtPrecio.Clear();
+            cmbMarca.SelectedIndex = -1;
+            cmbOrigen.SelectedIndex = -1;
+            rbNacional.Checked = false;
+            rbImportado.Checked = false;
+
+            txtNumero.Focus();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
