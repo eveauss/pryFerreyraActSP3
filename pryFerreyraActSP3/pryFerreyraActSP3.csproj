@@ -6,6 +6,11 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>installer_sign_arrow_down_downloading_directions_download_icon_267846.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="installer_sign_arrow_down_downloading_directions_download_icon_267846.ico" />
+  </ItemGroup>
 
 </Project>
